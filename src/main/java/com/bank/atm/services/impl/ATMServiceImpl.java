@@ -60,7 +60,7 @@ public class ATMServiceImpl implements ATMService {
         logger.info("Interrogating sold");
         return assetList
                 .parallelStream()
-                .filter(asset -> asset.getBalance().compareTo(0.0) > 0)
+                .filter(asset -> asset.getBalance().compareTo(0.0) != 0)
                 .collect(Collectors.toMap(Asset::getCurrency, Asset::getBalance));
     }
 
