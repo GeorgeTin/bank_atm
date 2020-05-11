@@ -54,6 +54,11 @@ public class ATMServiceImpl implements ATMService {
         assetRepository.save(asset);
     }
 
+    /**
+     * Interrogation only return the balance per currency if the balance is different than zero.
+     * @param bankAccount
+     * @return
+     */
     @Override
     public Map<Currency, Double> interrogate(BankAccount bankAccount) {
         List<Asset> assetList = assetRepository.findAllByBankAccountId(bankAccount.getId());

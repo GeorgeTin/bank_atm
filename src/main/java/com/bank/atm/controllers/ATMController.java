@@ -38,6 +38,16 @@ public class ATMController {
         this.cardService = cardService;
     }
 
+    /**
+     * Endpoint used to interrogate the sold. It return a dictionary: Currency:Sold, for all the
+     * Currencies that have sold different than zero.
+     * @param cardDTO information stored on a normal card used to identify the customer
+     * @param atmId id of the atm, used to log useful information.
+     * @return sold per currency.
+     * @throws InvalidCardException
+     * @throws NotFoundBankAccountException
+     * @throws NotFoundATMException
+     */
     @PostMapping
     public Map<Currency, Double> interrogateBankAccount(@RequestBody CardDTO cardDTO, @RequestParam Long atmId)
             throws InvalidCardException, NotFoundBankAccountException, NotFoundATMException {

@@ -23,6 +23,11 @@ public class CardServiceImpl implements CardService {
         return cardRepository.findById(id);
     }
 
+    /**
+     * Looks for a registered card based on the information stored on the physical card.
+     * @param cardDTO
+     * @return
+     */
     @Override
     public Optional<Card> findByCardInfo(CardDTO cardDTO) {
         return cardRepository.findCardByCardNumberAndIssueDateAndExpiryDateAndIssuingBankIdAndIssuingAgencyAndBankAccountId(

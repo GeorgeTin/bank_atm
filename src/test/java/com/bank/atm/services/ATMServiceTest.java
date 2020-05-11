@@ -64,7 +64,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    public void whenInterrogate_thenFindAssetsWithNotZeroBalance() {
+    public void whenInterrogate_thenFindAssetsWithNonZeroBalance() {
         Address address = new Address("Romania", "Bucharest", "Str. Victoriei", "123123");
         Bank bank = new Bank("ING", address, "bic");
         BankAccount ba = new BankAccount(1L, "12341234123451234", "123123", bank, null);
