@@ -4,3 +4,6 @@ INSERT INTO BANK_ACCOUNT(id, iban, account_number, bank_id, card_id) VALUES (1, 
 INSERT INTO CARD (id, card_number, issue_date, expiry_date, bank_id, issuing_agency, bank_account_id) VALUES (1, '1234123412341234', '2019-02-23T20:02:21.550', '2019-02-23T20:02:21.550', 1, 'ING', 1);
 UPDATE BANK_ACCOUNT SET card_id = 1 WHERE id = 1;
 INSERT INTO ASSET(id, currency, balance, bank_account_id) VALUES(1, 'EURO', 12.12, 1);
+
+INSERT INTO BRANCH(id, address_id) VALUES (1, 1);
+INSERT INTO ATM(id, branch_id, version) VALUES (1, 1, '1.1.1');
