@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Getter @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class ATM {
 
     @Id
@@ -18,7 +19,7 @@ public class ATM {
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JoinColumn(name="branch_id")
     private Branch branch;
 
     @NotNull
