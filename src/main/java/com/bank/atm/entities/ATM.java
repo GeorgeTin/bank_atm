@@ -1,4 +1,4 @@
-package com.bank.atm.models;
+package com.bank.atm.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

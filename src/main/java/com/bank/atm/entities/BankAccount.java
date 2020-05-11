@@ -1,6 +1,5 @@
-package com.bank.atm.models;
+package com.bank.atm.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,11 +20,11 @@ public class BankAccount {
     @NotNull
     private String accountNumber;
 
-    @NonNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bank_id")
     private Bank bank;
 
-    @NotNull
-    private String version;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "card_id", nullable = true)
+    private Card card;
 }

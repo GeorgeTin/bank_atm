@@ -1,4 +1,4 @@
-package com.bank.atm.models;
+package com.bank.atm.entities;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class Bank {
     private String name;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @NotNull

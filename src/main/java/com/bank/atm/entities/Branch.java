@@ -1,4 +1,4 @@
-package com.bank.atm.models;
+package com.bank.atm.entities;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class Branch {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @OneToMany(mappedBy="branch", fetch= FetchType.EAGER,
