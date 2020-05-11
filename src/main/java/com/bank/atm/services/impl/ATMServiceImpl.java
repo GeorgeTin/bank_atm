@@ -1,9 +1,11 @@
 package com.bank.atm.services.impl;
 
+import com.bank.atm.entities.ATM;
 import com.bank.atm.errors.NotEnoughAssetsException;
 import com.bank.atm.helpers.Currency;
 import com.bank.atm.entities.Asset;
 import com.bank.atm.entities.BankAccount;
+import com.bank.atm.repositories.ATMRepository;
 import com.bank.atm.repositories.AssetRepository;
 import com.bank.atm.services.ATMService;
 import org.slf4j.Logger;
@@ -20,11 +22,14 @@ import java.util.stream.Collectors;
 public class ATMServiceImpl implements ATMService {
 
     private AssetRepository assetRepository;
+    private ATMRepository atmRepository;
+
     private Logger logger = LoggerFactory.getLogger(ATMServiceImpl.class);
 
     @Autowired
-    public ATMServiceImpl(AssetRepository assetRepository) {
+    public ATMServiceImpl(AssetRepository assetRepository, ATMRepository atmRepository) {
         this.assetRepository = assetRepository;
+        this.atmRepository = atmRepository;
     }
 
     @Override
@@ -57,5 +62,10 @@ public class ATMServiceImpl implements ATMService {
                 .parallelStream()
                 .filter(asset -> asset.getBalance().compareTo(0.0) > 0)
                 .collect(Collectors.toMap(Asset::getCurrency, Asset::getBalance));
+    }
+
+    @Override
+    public Optional<ATM> findById(Long id) {
+        return atmRepository.findById(id);
     }
 }
