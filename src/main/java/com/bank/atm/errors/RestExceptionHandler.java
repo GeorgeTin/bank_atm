@@ -1,7 +1,6 @@
 package com.bank.atm.errors;
 
 import com.bank.atm.helpers.CustomHttpStatus;
-import com.bank.atm.services.impl.ATMServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
@@ -21,20 +20,28 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity handleInvalidCard(
             InvalidCardException ex) {
         logger.error("Invalid card exception thrown", ex);
-        return ResponseEntity.status(CustomHttpStatus.INVALID_DATA.getCode()).body(InvalidCardException.message);
+        return ResponseEntity.status(CustomHttpStatus.INVALID_DATA.getCode()).body(InvalidCardException.MESSAGE);
     }
 
     @ExceptionHandler(NotFoundBankAccountException.class)
     protected ResponseEntity handleNotFoundBankAccount(
             NotFoundBankAccountException ex) {
         logger.error("Not found bank account exception thrown", ex);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(NotFoundBankAccountException.message);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(NotFoundBankAccountException.MESSAGE);
     }
 
     @ExceptionHandler(NotEnoughAssetsException.class)
     protected ResponseEntity handleNotEnoughAssets(
             NotEnoughAssetsException ex) {
         logger.error("Not enough assets exception thrown", ex);
-        return ResponseEntity.status(CustomHttpStatus.UNACHIEVABLE.getCode()).body(NotEnoughAssetsException.message);
+        return ResponseEntity.status(CustomHttpStatus.UNACHIEVABLE.getCode()).body(NotEnoughAssetsException.MESSAGE);
+    }
+
+    @ExceptionHandler(NotFoundATMException.class)
+    protected ResponseEntity handleNotFoundATM(
+            NotFoundATMException ex
+    ) {
+        logger.error("Not found atm exception thrown", ex);
+        return ResponseEntity.status(CustomHttpStatus.INVALID_DATA.getCode()).body(NotFoundATMException.MESSAGE);
     }
 }
