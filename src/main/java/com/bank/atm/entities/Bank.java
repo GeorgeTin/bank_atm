@@ -1,6 +1,7 @@
 package com.bank.atm.entities;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -25,4 +26,10 @@ public class Bank {
 
     @NotNull
     private String bic;
+
+    public Bank(@NotNull String name, Address address, @NotNull String bic) {
+        this.name = name;
+        this.address = address;
+        this.bic = bic;
+    }
 }

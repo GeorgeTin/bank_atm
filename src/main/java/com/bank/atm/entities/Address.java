@@ -1,6 +1,7 @@
 package com.bank.atm.entities;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -30,4 +31,12 @@ public class Address {
 
     @NotNull
     private String postalCode;
+
+    public Address(@NotNull String county, @NotNull String locality,
+                   @NotNull String exactAddress, @NotNull String postalCode) {
+        this.county = county;
+        this.locality = locality;
+        this.exactAddress = exactAddress;
+        this.postalCode = postalCode;
+    }
 }

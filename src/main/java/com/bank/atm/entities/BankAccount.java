@@ -27,4 +27,12 @@ public class BankAccount {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "card_id", nullable = true)
     private Card card;
+
+    public BankAccount(Long id, @NotNull String iban, @NotNull String accountNumber, Bank bank, Card card) {
+        this.id = id;
+        this.iban = iban;
+        this.accountNumber = accountNumber;
+        this.bank = bank;
+        this.card = card;
+    }
 }

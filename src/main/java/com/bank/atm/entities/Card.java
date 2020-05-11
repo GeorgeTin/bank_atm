@@ -39,4 +39,5 @@ public class Card {
     @JoinColumn(name = "bank_account_id")
     private BankAccount bankAccount;
 
+
 }
